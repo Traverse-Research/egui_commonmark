@@ -62,9 +62,9 @@ impl CommonMarkViewerInternal {
         populate_split_points: bool,
     ) -> (egui::InnerResponse<()>, Vec<CheckboxClickEvent>) {
         let max_width = options.max_width(ui);
-        let layout = egui::Layout::left_to_right(egui::Align::BOTTOM).with_main_wrap(true);
+        let layout = ui.layout().with_main_wrap(true);
 
-        let re = ui.allocate_ui_with_layout(egui::vec2(max_width, 0.0), layout, |ui| {
+        let re = ui.allocate_ui(egui::vec2(max_width, 0.0), |ui| {
             ui.spacing_mut().item_spacing.x = 0.0;
             let height = ui.text_style_height(&TextStyle::Body);
             ui.set_row_height(height);
@@ -139,7 +139,7 @@ impl CommonMarkViewerInternal {
             .auto_shrink([false, true])
             .show_viewport(ui, |ui, viewport| {
                 ui.set_height(page_size.y);
-                let layout = egui::Layout::left_to_right(egui::Align::BOTTOM).with_main_wrap(true);
+                let layout = ui.layout().with_main_wrap(true);
 
                 let max_width = options.max_width(ui);
                 ui.allocate_ui_with_layout(egui::vec2(max_width, 0.0), layout, |ui| {

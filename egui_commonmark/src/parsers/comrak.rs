@@ -44,7 +44,7 @@ impl CommonMarkViewerInternal {
         text: &str,
     ) -> egui::InnerResponse<()> {
         let max_width = options.max_width(ui);
-        let layout = egui::Layout::left_to_right(egui::Align::BOTTOM).with_main_wrap(true);
+        let layout = ui.layout().with_main_wrap(true);
 
         ui.allocate_ui_with_layout(egui::vec2(max_width, 0.0), layout, |ui| {
             ui.spacing_mut().item_spacing.x = 0.0;
